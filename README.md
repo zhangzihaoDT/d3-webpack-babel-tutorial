@@ -6,7 +6,7 @@ git status
 git add
 git commit
 ```
-本站点是使用 [GitHub Pages](https://pages.github.com/) 构建的。
+本项目主要借鉴了[如何从零开始为基本网站配置Webpack 4](https://github.com/pixelgoo/simple_webpack_boilerplate) 和[如何使用Webpack和Babel设置D3.js](https://github.com/maecapozzi/d3-webpack-babel-tutorial)构建的。
 
 - George Washington
 - John Adams
