@@ -34,6 +34,42 @@ rules: [
     }
 ]
 ```
+2.sass-loader
+将sass导入javascript/index.js`import '../sass/styles.scss';`
+添加解析依赖路径`npm i --save-dev sass sass-loader postcss-loader css-loader`并设置：
+```
+rules: [
+    {
+      test: /\.js$/,
+      /* ... */
+    },
+    {
+      // Apply rule for .sass, .scss or .css files
+      test: /\.(sa|sc|c)ss$/,
+
+      // Set loaders to transform files.
+      // Loaders are applying from right to left(!)
+      // The first loader will be applied after others
+      use: [
+             {
+               // This loader resolves url() and @imports inside CSS
+               loader: "css-loader",
+             },
+             {
+               // Then we apply postCSS fixes like autoprefixer and minifying
+               loader: "postcss-loader"
+             },
+             {
+               // First we transform SASS to standard CSS
+               loader: "sass-loader"
+               options: {
+                 implementation: require("sass")
+               }
+             }
+           ]
+    }
+]
+```
 
 
 - George Washington
