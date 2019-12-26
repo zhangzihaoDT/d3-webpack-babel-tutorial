@@ -15,10 +15,24 @@
      - styles.scss
    - index.html
 2. webpack.config.js
+
+3.Loaders
+1. babel-loader
+`npm i --save-dev babel-loader @babel/core @babel/preset-env`
+在webpack.config.js中设置
 ```
-git status
-git add
-git commit
+rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      }
+    }
+]
 ```
 
 
