@@ -1,12 +1,26 @@
 # d3-webpack-babel-tutorial
-`link`
-一些基本的 Git 命令为：
+
+本项目主要借鉴了[如何从零开始为基本网站配置Webpack 4](https://github.com/pixelgoo/simple_webpack_boilerplate) 和[如何使用Webpack和Babel设置D3.js](https://github.com/maecapozzi/d3-webpack-babel-tutorial)构建的。
+
+1.安装Webpack
+`npm i --save-dev webpack webpack-cli`
+
+2.创建基本文件
+1. src
+   - fonts
+   - images
+   - javascripts
+     - index.js
+   - sass
+     - styles.scss
+   - index.html
+2. webpack.config.js
 ```
 git status
 git add
 git commit
 ```
-本项目主要借鉴了[如何从零开始为基本网站配置Webpack 4](https://github.com/pixelgoo/simple_webpack_boilerplate) 和[如何使用Webpack和Babel设置D3.js](https://github.com/maecapozzi/d3-webpack-babel-tutorial)构建的。
+
 
 - George Washington
 - John Adams
@@ -16,9 +30,7 @@ git commit
 2. James Monroe
 3. John Quincy Adams
 
-1. First list item
-   - First nested list item
-     - Second nested list item
+
      
 - [x] Finish my changes
 - [ ] Push my commits to GitHub
