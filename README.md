@@ -70,11 +70,60 @@ rules: [
     }
 ]
 ```
+设置PostCSS`npm i --save-dev autoprefixer cssnano`和post.config.css
+```
+// It is handy to not have those transformations while we developing
+if(process.env.NODE_ENV === 'production') {
+    module.exports = {
+        plugins: [
+            require('autoprefixer'),
+            require('cssnano'),
+            // More postCSS modules here if needed
+        ]
+    }
+}
+```
+压缩插件：MiniCssExtractPlugin`npm i --save-dev mini-css-extract-plugin`，在webpack.config中设置
+```
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+```
+在`module.rules`后面接上`plugins`
+```
+module: {
+  rules: [
+    /* ... */
+  ]
+},
+plugins: [
 
+  new MiniCssExtractPlugin({
+    filename: "bundle.css"
+  })
 
-- George Washington
-- John Adams
-- Thomas Jefferson
+]
+```
+现在我们可以将此插件链接到我们的CSS加载器中：
+```
+{
+      test: /\.(sa|sc|c)ss$/,
+      use: [
+             {
+               // After all CSS loaders we use plugin to do his work.
+               // It gets all transformed CSS and extracts it into separate
+               // single bundled file
+               loader: MiniCssExtractPlugin.loader
+             }, 
+             {
+               loader: "css-loader",
+             },
+             /* ... Other loaders ... */
+           ]
+}
+```
+3.文件类预处理
+- images
+- fonts
+
 
 1. James Madison
 2. James Monroe
