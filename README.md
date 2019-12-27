@@ -123,16 +123,102 @@ plugins: [
 3.文件类预处理
 - images
 - fonts
+安装`npm i --save-dev file-loader`并更新webpack.config.js
 
+4.输出管理
+- 动态生成Html
+设置HtmlWebpackPlugin；首先安装插件并调整webpack.config.js文件：`npm install --save-dev html-webpack-plugin`;webpack.config.js
+```
+ const path = require('path');
++ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-1. James Madison
-2. James Monroe
-3. John Quincy Adams
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js',
+    },
++   plugins: [
++     new HtmlWebpackPlugin({
++       title: 'Output Management',
++     }),
++   ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+  };
+```
+- 清理Html/dist的缓存
+一个流行的插件可以管理它，`clean-webpack-plugin`所以让我们安装和配置它。`npm install --save-dev clean-webpack-plugin` 
+webpack.config.js
+```
+ const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
++ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-
-     
-- [x] Finish my changes
-- [ ] Push my commits to GitHub
-- [ ] Open a pull request
-
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js',
+    },
+    plugins: [
++     new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Output Management',
+      }),
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
+    },
+  };
+```
+5.设置开发环境
+- [x] 设置 source map
+```
++   devtool: 'inline-source-map',
+```
+- [ ] 设置 mode:'development'
+```
+module.exports = {
++   mode: 'development',
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js',
+    },
+```
+- [ ] 设置 webpack-dev-server`npm install --save-dev webpack-dev-server`
+更改配置文件，以告知开发服务器在哪里查找文件：
+webpack.config.js
+```
+devtool: 'inline-source-map',
++   devServer: {
++     contentBase: './dist',
++   },
+    plugins: [
+      // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        title: 'Development',
+      }),
+    ],
+```
+添加一个脚本来轻松地运行开发服务器：
+package.json
+```
+"scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "watch": "webpack --watch",
++     "start": "webpack-dev-server --open",
+      "build": "webpack"
+    },
+```
+6.安装d3，并import使用
+- `npm install d3`
+- 在index.js中设置
+```
+import * as d3 from 'd3';
+const square = d3.selectAll("rect");
+square.style("fill", "orange");
+```
 @octocat :+1: 这个 PR 看起来很棒 - 可以合并了！ :shipit:
