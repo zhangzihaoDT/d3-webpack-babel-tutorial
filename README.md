@@ -3,6 +3,16 @@
 本项目主要借鉴了[如何从零开始为基本网站配置Webpack 4](https://github.com/pixelgoo/simple_webpack_boilerplate) 和[如何使用Webpack和Babel设置D3.js](https://github.com/maecapozzi/d3-webpack-babel-tutorial)构建的。
 [webpack官方文档](https://webpack.js.org/guides/development/)
 
+## Install
+```
+git clone git@github.com:zhangzihaoDT/d3-webpack-babel-tutorial.git your-app # change your-app to the name of your project
+cd your-app
+git remote remove origin
+# edit the package.json, then continue on
+npm install
+npm start
+```
+
 1.安装Webpack
 `npm i --save-dev webpack webpack-cli`
 
