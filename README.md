@@ -222,4 +222,31 @@ import * as d3 from 'd3';
 const square = d3.selectAll("rect");
 square.style("fill", "orange");
 ```
+7.同步项目到git-pages
+-将本地项目 push 到远程
+```
+git init
+git add .
+git commit -m 'create app'
+git remote add origin <git url>
+git push -u origin master
+```
+-添加npm-scripts：
+```
+"scripts": {
+    "gh": "gh-pages -d dist"
+}
+```
+-修改publickPath
+```
+module.exports = {
+    ...
+    build: {
+        ...
+        assetsPublicPath: '', // 此处原来是assetsPublicPath: '/'
+        ...
+    }
+```
+-生成生产版本，并部署到Github Page
+
 @octocat :+1: 这个 PR 看起来很棒 - 可以合并了！ :shipit:
