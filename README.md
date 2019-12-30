@@ -12,7 +12,7 @@ git remote remove origin
 npm install
 npm start
 ```
-
+## 实践路径
 1.安装Webpack
 `npm i --save-dev webpack webpack-cli`
 
