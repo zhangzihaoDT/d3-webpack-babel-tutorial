@@ -31,7 +31,10 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
+    "csv-loader": "^3.0.2",
     "d3": "^5.14.2",
+    "gh-pages": "^2.2.0",
+    "papaparse": "^5.1.1",
     "postcss-import": "^12.0.1"
   }
 }
